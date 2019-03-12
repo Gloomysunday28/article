@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/iconfont.cae5fb62.css">
+  <title>Document</title>
+  <style>* {
+      margin: 0;
+      padding: 0;
+    }
+    canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #000;
+      /* background: #000; */
+    }
+    .c-tool__box {
+      position: absolute;
+      display: flex;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%);
+    }
+    .c-tool {
+      position: absolute;
+      left: 0%;
+      bottom: 20px;
+      display: flex;
+      list-style: none;
+      visibility: hidden;
+      transition: transform .5s;
+      background: rgba(0,0,0, .5);
+      border-radius: 25px;
+      padding: 5px 10px;
+    }
+    .c-arrow {
+      border: 10px solid transparent;
+      border-top-color:rgba(0,0,0,.5);
+      position: absolute;
+      left: 15px;
+      bottom: -19px;
+    }
+    .c-tool li {
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      list-style: none;
+      margin: 0 5px;
+    }
+    .c-tool li.c-tool-active {
+      border: 2px solid aliceblue;
+      box-sizing: border-box;
+    }
+    .c-erea {
+      margin: 0 10px;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #000;
+      white-space: nowrap;
+      cursor: pointer;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .c-return {
+      left: 40%;
+      bottom: 20px;
+    }
+    .c-recover {
+      left: 42%;
+      bottom: 20px;
+    }
+    .c-erea .iconfont {
+      font-size: 22px;
+    }
+    .c-pencil .iconfont {
+      font-size: 24px;
+    }
+    .c-recover .iconfont {
+      font-size: 16px;
+    }
+    .c-return .iconfont {
+      font-size: 20px;
+    }
+    .c-pencil:hover .c-tool{
+      visibility: unset;
+      transform: translate3d(0,-22px,0);
+    }</style>
+<script src="/iconfont.cae5fb62.js"></script></head>
+<body>
+  <canvas width="600" height="600"></canvas>
+  <div class="c-tool__box">
+    <div class="c-erea c-pencil">
+      <i class="iconfont">&#xe61e;</i>
+      <ul class="c-tool">
+        <span class="c-arrow"></span>
+        <li class="c-tool-active" style="background: black"></li>
+        <li style="background: red"></li>
+        <li style="background: blue"></li>
+        <li style="background: green"></li>
+        <li style="background: yellow"></li>
+      </ul>
+    </div>
+    <div class="c-erea">
+      <i class="iconfont">&#xe6b8;</i>
+    </div>
+    <div class="c-return c-erea">
+      <i class="iconfont">&#xe6dd;</i>
+    </div>
+    <div class="c-recover c-erea">
+      <i class="iconfont">&#xe638;</i>
+    </div>
+  </div>
+  <script src="/画板.e31bb0bc.js"></script>
+</body>
+</html>
