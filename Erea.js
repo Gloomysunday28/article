@@ -3,8 +3,9 @@ import Sketchpad from './Sketchpad'
 class Erea extends Sketchpad {
   constructor() {
     super()
-    this.type = 'erea'
-    super.initSket()
+  }
+  get type() {
+    return 'erea'
   }
   clearSket(e) {
     this.ctx.strokeStyle = '#000'

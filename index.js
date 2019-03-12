@@ -1,5 +1,6 @@
 import Pencil from './Pencil'
 import Erea from './Erea'
+import screen from './ScreenShoot'
 import util from './decorate'
 // import Animation from './Animate'
 
@@ -7,6 +8,8 @@ const tools = document.getElementsByTagName('ul')[0]
 const erea = document.getElementsByClassName('c-erea')[1]
 const back = document.getElementsByClassName('c-return')[0]
 const recover = document.getElementsByClassName('c-recover')[0]
+const screenShoot = document.getElementsByClassName('c-screen__shoot')[0]
+const screenBtn = document.getElementsByClassName('m-screen__btn')[0]
 
 Pencil.initSket()
 // Animation.initCircle()
@@ -26,9 +29,7 @@ tools.onclick = function (e) {
 
 // 橡皮擦
 erea.onclick = function () {
-  util.proxy(e, function(e) {
-    Erea.initSket()
-  })
+  Erea.initSket()
 }
 
 // 撤销
@@ -51,3 +52,14 @@ recover.onclick = function () {
     Pencil.ctx.drawImage(...cover.params)
   } 
 }
+
+// 截图
+screenShoot.onclick = function(e) {
+  util.proxy(e, e => {
+    screen.initSket(function(position) {
+      screenBtn.onclick = function() {
+
+      }
+    })  
+  })  
+}  

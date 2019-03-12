@@ -3,8 +3,9 @@ import Sketchpad from './Sketchpad'
 class Pencil extends Sketchpad {
   constructor() {
     super()
-    this.type = 'pencil'
-    super.initSket()
+  }
+  get type() {
+    return 'pencil'
   }
   changeColor(color) {
     this.color = color

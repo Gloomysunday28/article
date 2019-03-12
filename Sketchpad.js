@@ -23,6 +23,9 @@ export default class Sketchpad {
           case 'erea':
             this.clearSket(e)
             break
+          case 'screenShoot':
+            this.screenShoot(e)
+            break
           default:
             break
         }
