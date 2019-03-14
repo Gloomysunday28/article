@@ -49,21 +49,24 @@ export default class Sketchpad {
           this.ctx.drawImage(...[img, 0, 0, this.width, this.height])
         }
         window.onmouseup = e => {
-          const canvas = document.createElement('canvas')
-          const ctx = canvas.getContext('2d')
-          canvas.width = 300
-          canvas.height = 300
-          canvas.classList.add('my-canvas')
-          document.querySelector('#app').appendChild(canvas)
-          const imgX = e.clientX > (this.startX + this.offsetX) ? this.startX + this.offsetX : e.clientX
-          const imgY = e.clientY > (this.startY + this.offsetY) ? this.startY + this.offsetY : e.clientY
-          const imgWidth = Math.abs(e.clientX - this.startX - this.offsetX)
-          const imgHeight = Math.abs(e.clientY - this.startY - this.offsetY)
-          this.canvas.onmousemove = null
-          this.img.src = this.screenImage
-          this.img.onload = () => {
-            ctx.drawImage(this.img, imgX, imgY, imgWidth, imgHeight, 0, 0, 300, 300)
+          if (this.type === 'screenShoot') {
+            const canvas = document.createElement('canvas')
+            const ctx = canvas.getContext('2d')
+            canvas.width = 300
+            canvas.height = 300
+            canvas.classList.add('my-canvas')
+            document.querySelector('#app').appendChild(canvas)
+            const imgX = e.clientX > (this.startX + this.offsetX) ? this.startX + this.offsetX : e.clientX
+            const imgY = e.clientY > (this.startY + this.offsetY) ? this.startY + this.offsetY : e.clientY
+            const imgWidth = Math.abs(e.clientX - this.startX - this.offsetX)
+            const imgHeight = Math.abs(e.clientY - this.startY - this.offsetY)
+            this.img.src = this.screenImage
+            this.img.onload = () => {
+              ctx.drawImage(this.img, imgX, imgY, imgWidth, imgHeight, 0, 0, 300, 300)
+            }
+            this.ctx.clearRect(0,0, this.width, this.height)
           }
+          this.canvas.onmousemove = null
           this.ctx.closePath()
         }
       })
