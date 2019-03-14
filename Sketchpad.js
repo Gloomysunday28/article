@@ -3,6 +3,12 @@ import util from './decorate'
 export default class Sketchpad {
   constructor() {
     this.canvas = document.getElementsByTagName ('canvas')[0];
+    this.clientWidth = document.documentElement.clientWidth
+    this.clientHeight = document.documentElement.clientHeight
+    this.canvas.width = this.clientWidth
+    this.canvas.height = this.clientHeight
+    this.img = document.getElementsByTagName ('img')[0];
+    this.screenCanvas = document.getElementsByTagName('div')[1]
     this.offsetX = this.canvas.getBoundingClientRect ().left;
     this.offsetY = this.canvas.getBoundingClientRect ().top;
     this.ctx = this.canvas.getContext ('2d'); // 拿起画笔
@@ -14,6 +20,11 @@ export default class Sketchpad {
   }
   initSket() {
     this.canvas.onmousedown = e => {
+      this.startX = e.clientX - this.offsetX
+      this.startY = e.clientY - this.offsetY
+      if (this.type === 'screenShoot') {
+        this.captureScreen(e).then(res => this.screenImage = res)
+      }
       util.proxy(e, e => {
         this.ctx.beginPath()
         switch(this.type) {
@@ -38,7 +49,21 @@ export default class Sketchpad {
           this.ctx.drawImage(...[img, 0, 0, this.width, this.height])
         }
         window.onmouseup = e => {
+          const canvas = document.createElement('canvas')
+          const ctx = canvas.getContext('2d')
+          canvas.width = 300
+          canvas.height = 300
+          canvas.classList.add('my-canvas')
+          document.querySelector('#app').appendChild(canvas)
+          const imgX = e.clientX > (this.startX + this.offsetX) ? this.startX + this.offsetX : e.clientX
+          const imgY = e.clientY > (this.startY + this.offsetY) ? this.startY + this.offsetY : e.clientY
+          const imgWidth = Math.abs(e.clientX - this.startX - this.offsetX)
+          const imgHeight = Math.abs(e.clientY - this.startY - this.offsetY)
           this.canvas.onmousemove = null
+          this.img.src = this.screenImage
+          this.img.onload = () => {
+            ctx.drawImage(this.img, imgX, imgY, imgWidth, imgHeight, 0, 0, 300, 300)
+          }
           this.ctx.closePath()
         }
       })

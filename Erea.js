@@ -15,14 +15,15 @@ class Erea extends Sketchpad {
       const y = e.clientY - this.offsetY - 10
       // this.ctx.save()
       // this.ctx.beginPath()
-      // this.ctx.strokeRect(e.clientX - this.offsetX - 10, e.clientY - this.offsetY - 10, 20, 20)
+      // this.ctx.strokeRect(x, y, 20, 20)
+      this.ctx.clearRect(x, y, 20, 20)
+      // console.log(x, y)
       // this.ctx.arc(x,y,20,0,2*Math.PI);
       // this.ctx.clip()
       // this.ctx.clearRect(0,0,this.width,this.height);
       // this.ctx.restore();
       // this.ctx.restore()
       // this.ctx.strokeRect(x, y, 20, 20)
-      this.ctx.clearRect(x, y, 20, 20)
       // this.ctx.save()
     }
   }

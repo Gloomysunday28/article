@@ -11,19 +11,42 @@
       margin: 0;
       padding: 0;
     }
-    canvas {
+    #app {
+      width: 100vw;
+      height: 100vh;
+    }
+    #canvas {
+      z-index: 1;
+      /* width: 100vw;
+      height: 100vh; */
+      box-sizing: border-box;
+    }
+    #canvas, .canvas {
       position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border: 1px solid #000;
+      
       /* background: #000; */
+      user-select: none;
+    }
+    .my-canvas {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      border: 1px solid #000;
+    }
+    .canvas {
+      width: 300px;
+      height: 300px;
+      left: 0;
+      top: 0;
+      border: 1px solid #000;
+      /* background:url(lufu.png); */
     }
     .c-tool__box {
       position: absolute;
       display: flex;
       left: 50%;
       bottom: 20px;
+      z-index: 2;
       transform: translate(-50%);
     }
     .c-tool {
@@ -109,35 +132,46 @@
       transform: translateY(-50%);
       cursor: pointer;
     }
+    .c-screen__shoot__image {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
   </style>
 </head>
 <body>
-  <canvas width="600" height="600"></canvas>
-  <button class="m-screen__btn">截图</button>
-  <div class="c-tool__box">
-    <div class="c-erea c-pencil">
-      <i class="iconfont">&#xe61e;</i>
-      <ul class="c-tool">
-        <span class="c-arrow"></span>
-        <li class="c-tool-active" style="background: black"></li>
-        <li style="background: red"></li>
-        <li style="background: blue"></li>
-        <li style="background: green"></li>
-        <li style="background: yellow"></li>
-      </ul>
+  <div id="app">
+    <canvas id="canvas" width="100%" height="100%"></canvas>
+    <div class="canvas">
+      djfjkfdsajlkj
     </div>
-    <div class="c-erea">
-      <i class="iconfont">&#xe6b8;</i>
+    <button class="m-screen__btn">截图</button>
+    <div class="c-tool__box">
+      <div class="c-erea c-pencil">
+        <i class="iconfont">&#xe61e;</i>
+        <ul class="c-tool">
+          <span class="c-arrow"></span>
+          <li class="c-tool-active" style="background: black"></li>
+          <li style="background: red"></li>
+          <li style="background: blue"></li>
+          <li style="background: green"></li>
+          <li style="background: yellow"></li>
+        </ul>
+      </div>
+      <div class="c-erea">
+        <i class="iconfont">&#xe6b8;</i>
+      </div>
+      <div class="c-return c-erea">
+        <i class="iconfont">&#xe6dd;</i>
+      </div>
+      <div class="c-recover c-erea">
+        <i class="iconfont">&#xe638;</i>
+      </div>
+      <div class="c-screen__shoot c-erea">
+        <i class="iconfont">&#xe607;</i>
+      </div>
     </div>
-    <div class="c-return c-erea">
-      <i class="iconfont">&#xe6dd;</i>
-    </div>
-    <div class="c-recover c-erea">
-      <i class="iconfont">&#xe638;</i>
-    </div>
-    <div class="c-screen__shoot c-erea">
-      <i class="iconfont">&#xe607;</i>
-    </div>
+    <img class="c-screen__shoot__image" src="" alt="">
   </div>
   <script src="./index.js"></script>
 </body>
